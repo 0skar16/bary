@@ -6,7 +6,8 @@ use tar::Archive;
 
 pub struct Server {
     rocket: Rocket,
-    frontend: BTreeMap<String, Vec<u8>>
+    frontend: BTreeMap<String, Vec<u8>>,
+    routes: BTreeMap<String, Vec<Route>>,
 }
 impl Server {
     pub fn new(port: u16, frontend: impl Frontend, secret_key: Option<impl Into<String>>) -> Server {
@@ -19,6 +20,7 @@ impl Server {
         Server {
             rocket,
             frontend: frontend.resolve().expect("Couldn't resolve frontend"),
+            routes: BTreeMap::new(),
         }
     }
 
@@ -35,7 +37,13 @@ impl Server {
             let routes = vec![route];
             rocket = rocket.mount("/", routes);
         }
+        for (base, routes) in self.routes {
+            rocket = rocket.mount(&base, routes);
+        }
         Err(rocket.launch())
+    }
+    pub fn mount<R: Into<Vec<Route>>>(&mut self, base: &str, routes: R) {
+        self.routes.insert(base.to_string(), routes.into());
     }
 }
 pub trait Frontend {

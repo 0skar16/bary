@@ -3,7 +3,12 @@ name = "bary"
 version = "0.1.0"
 edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
+keywords = [ "js", "javascript", "bary", "framework", "web" ]
+categories = [ "web-programming" ]
+homepage = "https://github.com/0skar16/bary"
+repository = "https://github.com/0skar16/bary"
+description = "A framework to build http servers with rust backend and vite frontend"
+readme = "README.md"
 [dependencies]
 anyhow = "1.0.70"
 

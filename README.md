@@ -1,2 +1,2 @@
 # bary
-Rust &amp; SolidJS based webapp packer
+A framework to build http servers with rust backend and vite frontend

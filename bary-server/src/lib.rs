@@ -3,7 +3,7 @@ use std::{collections::BTreeMap, io::{Read, Cursor}, path::PathBuf};
 use rocket::{Config, error::LaunchError, Rocket, Handler, handler::Outcome, Route, http::{Method, ContentType}, response::Responder, Response};
 use anyhow::Result;
 use tar::Archive;
-
+pub use rocket;
 pub struct Server {
     rocket: Rocket,
     frontend: BTreeMap<String, Vec<u8>>,

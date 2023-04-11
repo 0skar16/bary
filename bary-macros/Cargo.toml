@@ -12,8 +12,6 @@ proc-macro = true
 bary-config = {path = "../bary-config"}
 quote = "1.0.26"
 syn = { version = "2.0.14", features = ["full"] }
-bary-server = {path = "../bary-server"}
 serde = { version = "1.0.160", features = ["derive"] }
 serde_tokenstream = "0.2.0"
 proc-macro2 = "1.0.56"
-serde_yaml = "0.9.21"

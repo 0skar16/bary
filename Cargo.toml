@@ -11,6 +11,5 @@ bary-macros = {path = "bary-macros"}
 bary-config = {path = "bary-config"}
 bary-server = { path = "bary-server" }
 tar = "0.4.38"
-tempdir = "0.3.7"
 [workspace]
 members = ["bary-macros", "bary-config", "bary-server"]

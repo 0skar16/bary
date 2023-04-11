@@ -21,5 +21,5 @@ pub struct Config {
 
 #[derive(Debug, Deserialize)]
 pub struct BaryAppAttr {
-    pub config: String,
+    pub secret_key: String,
 }

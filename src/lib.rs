@@ -5,7 +5,6 @@ pub use bary_macros::bary_app;
 pub use bary_server::*;
 pub use bary_config as config;
 pub use tar;
-pub use tempdir;
 pub fn load(config_path: impl Into<PathBuf>) -> Result<()> {
     let path: PathBuf = config_path.into();
     println!("cargo:rerun-if-changed={}", path.display());
@@ -28,7 +27,6 @@ macro_rules! frontend_setup {
         {
             use std::io::Cursor;
             use $crate::tar::Archive;
-            use $crate::tempdir::TempDir;
             let frontend: &[u8] = include_bytes!(concat!(env!("OUT_DIR"), "/frontend.tar"));
             let mut cursor = Cursor::new(frontend.to_vec());
             let mut archive = Archive::new(cursor);

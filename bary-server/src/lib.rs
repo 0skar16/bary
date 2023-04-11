@@ -9,15 +9,19 @@ pub struct Server {
     frontend: BTreeMap<String, Vec<u8>>
 }
 impl Server {
-    pub fn new(port: u16, frontend: impl Frontend) -> Server {
-        let mut config = Config::production();
-        config.set_port(port);
-        let rocket = rocket::custom(config);
+    pub fn new(port: u16, frontend: impl Frontend, secret_key: Option<impl Into<String>>) -> Server {
+        let mut config = Config::build(rocket::config::Environment::Production);
+        config = config.port(port);
+        if let Some(secret_key) = secret_key {
+            config = config.secret_key(secret_key.into())
+        }
+        let rocket = rocket::custom(config.expect("Couldn't build rocket sconfig"));
         Server {
             rocket,
             frontend: frontend.resolve().expect("Couldn't resolve frontend"),
         }
     }
+
     pub fn start(self) -> Result<(), LaunchError> {
         let mut rocket = self.rocket;
         for (path, bytes) in self.frontend {

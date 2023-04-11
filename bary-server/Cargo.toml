@@ -1,0 +1,12 @@
+[package]
+name = "bary-server"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.70"
+rocket = "0.4.11"
+rocket_contrib = "0.4.11"
+tar = "0.4.38"

@@ -1,0 +1,16 @@
+[package]
+name = "bary"
+version = "0.1.0"
+edition = "2021"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.70"
+
+bary-macros = {path = "bary-macros"}
+bary-config = {path = "bary-config"}
+bary-server = { path = "bary-server" }
+tar = "0.4.38"
+tempdir = "0.3.7"
+[workspace]
+members = ["bary-macros", "bary-config", "bary-server"]

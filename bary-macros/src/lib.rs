@@ -20,7 +20,7 @@ pub fn bary_app(attr: TokenStream, mut item: TokenStream) -> TokenStream {
     let main = quote!(
         fn main() {
             let frontend = bary::frontend_setup!();
-            let config = bary::config::load_config_from_str(include_str!(concat!(env!("OUT_DIR"), "/bary.yaml"))).expect("Couldn't load config");
+            let config = bary::load_config_from_str(include_str!(concat!(env!("OUT_DIR"), "/bary.yaml"))).expect("Couldn't load config");
             let bary = bary::Server::new(config.port, frontend, Some(#key));
             #ident(bary);
         }

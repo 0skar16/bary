@@ -1,7 +1,8 @@
-use std::{collections::BTreeMap, io::{Read, Cursor}, path::PathBuf};
+use std::{collections::BTreeMap, io::{Read, Cursor}, path::PathBuf, fs::File};
 
-use rocket::{Config, error::LaunchError, Rocket, Handler, handler::Outcome, Route, http::{Method, ContentType}, response::Responder, Response};
+use rocket::{Config as RocketConfig, error::LaunchError, Rocket, Handler, handler::Outcome, Route, http::{Method, ContentType}, response::Responder, Response};
 use anyhow::Result;
+use serde::{Serialize, Deserialize};
 use tar::Archive;
 pub use rocket;
 pub struct Server {
@@ -11,7 +12,7 @@ pub struct Server {
 }
 impl Server {
     pub fn new(port: u16, frontend: impl Frontend, secret_key: Option<impl Into<String>>) -> Server {
-        let mut config = Config::build(rocket::config::Environment::Production);
+        let mut config = RocketConfig::build(rocket::config::Environment::Production);
         config = config.port(port);
         if let Some(secret_key) = secret_key {
             config = config.secret_key(secret_key.into())
@@ -88,4 +89,26 @@ impl<'r> Responder<'r> for VFResponder {
         }
         builder.ok()
     }
+}
+pub fn load_config(config_path: PathBuf) -> Result<Config> {
+    let abs_path = std::fs::canonicalize(config_path)?;
+    let f = File::open(abs_path)?;
+    Ok(serde_yaml::from_reader(f)?)
+}
+pub fn load_config_from_bytes(config: Vec<u8>) -> Result<Config> {
+    Ok(serde_yaml::from_slice(&config)?)
+}
+pub fn load_config_from_str(config: &str) -> Result<Config> {
+    Ok(serde_yaml::from_str(config)?)
+}
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Config {
+    pub frontend: PathBuf,
+    pub port: u16,
+}
+
+
+#[derive(Debug, Deserialize)]
+pub struct BaryAppAttr {
+    pub secret_key: String,
 }

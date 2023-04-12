@@ -3,7 +3,6 @@ use bary_config::load_config;
 use anyhow::Result;
 pub use bary_macros::bary_app;
 pub use bary_server::*;
-pub use bary_config as config;
 pub use tar;
 pub fn load(config_path: impl Into<PathBuf>) -> Result<()> {
     let path: PathBuf = config_path.into();

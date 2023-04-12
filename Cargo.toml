@@ -14,8 +14,7 @@ readme = "README.md"
 anyhow = "1.0.70"
 
 bary-macros = {path = "./bary-macros", version = "*"}
-bary-config = {path = "./bary-config", version = "*"}
 bary-server = {path = "./bary-server", version = "*"}
 tar = "0.4.38"
 [workspace]
-members = ["bary-macros", "bary-config", "bary-server"]
+members = ["bary-macros", "bary-server"]

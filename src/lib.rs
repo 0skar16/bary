@@ -1,5 +1,4 @@
 use std::{path::PathBuf, env, fs::File};
-use bary_config::load_config;
 use anyhow::Result;
 pub use bary_macros::bary_app;
 pub use bary_server::*;

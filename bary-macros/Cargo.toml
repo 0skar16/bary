@@ -5,15 +5,14 @@ edition = "2021"
 homepage = "https://github.com/0skar16/bary"
 repository = "https://github.com/0skar16/bary"
 description = "A framework to build http servers with rust backend and vite frontend"
-license = "GPL-3.0-or-later"
-readme = "README.md"
+license = "GPL-3.0-only"
 [lib]
 proc-macro = true
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-bary-server = {path = "../bary-server"}
+bary-server = {path = "../bary-server", version = "*"}
 quote = "1.0.26"
 syn = { version = "2.0.14", features = ["full"] }
 serde = { version = "1.0.160", features = ["derive"] }

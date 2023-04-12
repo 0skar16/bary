@@ -1,5 +1,5 @@
 
-use bary_config::BaryAppAttr;
+use bary_server::BaryAppAttr;
 use proc_macro::{TokenStream};
 use proc_macro2::TokenStream as TokenStream2;
 use quote::quote;

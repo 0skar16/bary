@@ -8,7 +8,7 @@ categories = [ "web-programming" ]
 homepage = "https://github.com/0skar16/bary"
 repository = "https://github.com/0skar16/bary"
 description = "A framework to build http servers with rust backend and vite frontend"
-license = "GPL-3"
+license = "	GPL-3.0-only"
 readme = "README.md"
 [dependencies]
 anyhow = "1.0.70"

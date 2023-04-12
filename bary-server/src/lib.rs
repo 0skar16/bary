@@ -27,17 +27,18 @@ impl Server {
 
     pub fn start(self) -> Result<(), LaunchError> {
         let mut rocket = self.rocket;
+        let mut routes = vec![];
         for (path, bytes) in self.frontend {
             let handler = VecHandler(VFResponder(bytes, PathBuf::from(&path)));
             if path.ends_with("index.html") {
                 let path = path.trim_end_matches("index.html");
                 let route = Route::new(Method::Get, path, handler.clone());
-                rocket = rocket.mount("/", vec![route])
+                routes.push(route);
             }
             let route = Route::new(Method::Get, path.as_str(), handler);
-            let routes = vec![route];
-            rocket = rocket.mount("/", routes);
+            routes.push(route);
         }
+        rocket = rocket.mount("/", routes);
         for (base, routes) in self.routes {
             rocket = rocket.mount(&base, routes);
         }

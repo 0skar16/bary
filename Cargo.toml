@@ -8,13 +8,13 @@ categories = [ "web-programming" ]
 homepage = "https://github.com/0skar16/bary"
 repository = "https://github.com/0skar16/bary"
 description = "A framework to build http servers with rust backend and vite frontend"
-license = "	GPL-3.0-only"
+license = "GPL-3.0-only"
 readme = "README.md"
 [dependencies]
 anyhow = "1.0.70"
 
-bary-macros = {path = "./bary-macros", version = "*"}
-bary-server = {path = "./bary-server", version = "*"}
+bary-macros = {path = "./bary-macros", version = "0"}
+bary-server = {path = "./bary-server", version = "0"}
 tar = "0.4.38"
 [workspace]
 members = ["bary-macros", "bary-server"]

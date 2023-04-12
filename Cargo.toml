@@ -1,6 +1,6 @@
 [package]
 name = "bary"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 keywords = [ "js", "javascript", "bary", "framework", "web" ]
@@ -11,10 +11,10 @@ description = "A framework to build http servers with rust backend and vite fron
 license = "GPL-3.0-only"
 readme = "README.md"
 [dependencies]
-anyhow = "1.0.70"
+anyhow = "1"
 
 bary-macros = {path = "./bary-macros", version = "0"}
 bary-server = {path = "./bary-server", version = "0"}
-tar = "0.4.38"
+tar = "0.4"
 [workspace]
 members = ["bary-macros", "bary-server"]

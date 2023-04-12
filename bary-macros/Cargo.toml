@@ -13,8 +13,8 @@ proc-macro = true
 
 [dependencies]
 bary-server = {path = "../bary-server", version = "0"}
-quote = "1.0.26"
-syn = { version = "2.0.14", features = ["full"] }
-serde = { version = "1.0.160", features = ["derive"] }
-serde_tokenstream = "0.2.0"
-proc-macro2 = "1.0.56"
+quote = "1"
+syn = { version = "2", features = ["full"] }
+serde = { version = "1", features = ["derive"] }
+serde_tokenstream = "0.2"
+proc-macro2 = "1"
